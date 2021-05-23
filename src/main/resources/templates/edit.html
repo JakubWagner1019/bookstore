@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${book.getTitle()}+' details page'"></title>
+</head>
+<body>
+<form method="post" th:action="@{/admin/edit/{id}(id=${id})}" th:object="${book}">
+  <label>
+    Title:
+    <input th:field="*{title}">
+  </label>
+  <label>
+    Author:
+    <input th:field="*{author}">
+  </label>
+  <label>
+    ISBN:
+    <input th:field="*{isbn}">
+  </label>
+  <label>
+    Publisher:
+    <input th:field="*{publisher}">
+  </label>
+  <label>
+    Genre:
+    <select th:field="*{genre}">
+      <option th:value="${genre}" th:text="${genre}" th:each="genre : ${genres}"></option>
+    </select>
+  </label>
+  <label>
+    Publication Date:
+    <input type="date" th:field="*{publicationDate}">
+  </label>
+  <input type="submit" name="Submit">
+</form>
+<br>
+<a th:href="@{/admin}">Go back to index</a>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Index</title>
+</head>
+<body>
+    <a th:href="@{/admin/create}">Add new book</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="bookEntry : ${bookMap}">
+                <td><a th:href="@{/book/{id}(id=${bookEntry.key})}" th:text="${bookEntry.value.getTitle()}"></a></td>
+                <td th:text="${bookEntry.value.getAuthor()}"></td>
+                <td><a th:href="@{admin/edit/{id}(id=${bookEntry.key})}">Edit</a></td>
+                <td><a th:href="@{admin/delete/{id}(id=${bookEntry.key})}">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

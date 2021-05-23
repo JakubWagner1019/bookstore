@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${book.getTitle()}+' details page'"></title>
+</head>
+<body>
+<p th:text="'Title: '+${book.getTitle()}"></p>
+<p th:text="'Author: '+${book.getAuthor()}"></p>
+<p th:text="'ISBN: '+${book.getIsbn()}"></p>
+<p th:text="'Publisher: '+${book.getPublisher()}"></p>
+<p th:text="'Genre: '+${book.getGenre()}"></p>
+<p th:text="'Publication date: '+${#temporals.format(book.getPublicationDate(),'dd MMM yyyy')}"></p>
+<br>
+<a th:href="@{/books}">Go back to index</a>
+</body>
+</html>

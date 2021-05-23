@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Index</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="bookEntry : ${bookMap}">
+                <td><a th:href="@{/book/{id}(id=${bookEntry.key})}" th:text="${bookEntry.value.getTitle()}"></a></td>
+                <td th:text="${bookEntry.value.getAuthor()}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
